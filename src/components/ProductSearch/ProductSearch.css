@@ -1,0 +1,13 @@
+.productSearch {
+    background-color: #ffffff;
+    padding: 26px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.productSearch_input {
+    height: 48px;
+    background-color: #F3F3F3;
+    width: max(540px, 30%);
+}

@@ -1,0 +1,18 @@
+.productTable {
+    background-color: #ffffff;
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.productTable_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productTable_top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}

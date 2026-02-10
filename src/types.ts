@@ -1,7 +1,6 @@
-export interface ITodo {
+export interface IProduct {
     id: number;
-    text: string;
-    completed: boolean;
+    name: string;
 }
 
 export type SortMethod = "completed" | "pending"
