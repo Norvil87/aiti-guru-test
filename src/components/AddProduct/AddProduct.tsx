@@ -2,8 +2,6 @@ import { Button, Form, Input, notification } from 'antd'
 
 import type { IAddProductProps } from "./AddProduct.types"
 
-import './AddProduct.css'
-
 const AddProduct = (props: IAddProductProps) => {
     const [api, contextHolder] = notification.useNotification();
 

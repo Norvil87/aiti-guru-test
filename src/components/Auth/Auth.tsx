@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Alert, Button, Checkbox, Form, Input, notification, Typography } from 'antd';
+import { Alert, Button, Checkbox, Divider, Form, Input, notification, Typography } from 'antd';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,9 +11,6 @@ import User from "../../assets/user.svg"
 import Lock from "../../assets/lock.svg"
 
 import './Auth.css'
-
-// emilys
-// emilyspass
 
 const Auth = () => {
   const navigate = useNavigate()
@@ -44,10 +41,14 @@ const Auth = () => {
       }
     } else {
       if (fields.remember) {
+        sessionStorage.removeItem("accessToken");
+        localStorage.setItem("accessToken", result.accessToken)
+      } else {
         sessionStorage.setItem("accessToken", result.accessToken)
+        localStorage.removeItem("accessToken");
       }
 
-      navigate("/products")
+      navigate("/products", { replace: true })
     }
   }
 
@@ -62,12 +63,13 @@ const Auth = () => {
           </div>
           <div className='align-center'>
             <Typography.Title level={1}>Добро пожаловать!</Typography.Title>
-            <Typography.Text>Пожалуйста, авторизируйтесь</Typography.Text>
+            <Typography.Text type="secondary">Пожалуйста, авторизируйтесь</Typography.Text>
           </div>
           <div className='auth_form'>
             <Form
               name="auth"
               layout='vertical'
+              requiredMark={false}
               onFinish={onFormSubmit}
             >
               <Form.Item
@@ -102,11 +104,12 @@ const Auth = () => {
                 </Button>
               </Form.Item>
             </Form>
-            <Typography.Text>или</Typography.Text>
-            <div className='align-center' >
-              <Typography.Text>Нет аккаунта?</Typography.Text>{" "}
-              <Typography.Link href=''>Создать</Typography.Link>
-            </div>
+            <Divider style={{ margin: 0 }}><Typography.Text type="secondary">или</Typography.Text></Divider>
+
+          </div>
+          <div className='align-center' >
+            <Typography.Text>Нет аккаунта?</Typography.Text>{" "}
+            <Typography.Link href=''>Создать</Typography.Link>
           </div>
         </div>
       </div>

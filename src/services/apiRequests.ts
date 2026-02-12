@@ -1,34 +1,28 @@
 import axios from "axios"
 
 import type { IProductsRequestParams, IProductsResponse, ILoginRequestBody } from "./apiRequests.types"
+import type { SortDirection } from "../types"
+import { DEFAULT_SELECT, DEFAULT_LIMIT } from "../consts"
 
 const BASE_API_URL = 'https://dummyjson.com/'
 
-export const loadProducts = (page: number, size: number, dateFrom: string, dateTo?: string, selectedVenues?: number[], selectedCity?: number, selectedBands?: number[], selectedGenres?: number[]): Promise<IProductsResponse> => {
+export const getProducts = (page: number = 1, searchString: string = "", sortBy?: string, order: SortDirection = 'ascend'): Promise<IProductsResponse> => {
     const params: IProductsRequestParams = {
-        page,
-        size,
-        dateFrom,
-        city: selectedCity
+        select: DEFAULT_SELECT,
+        limit: DEFAULT_LIMIT,
+        skip: (page - 1) * DEFAULT_LIMIT,
     }
 
-    // if (dateTo) {
-    //     params.dateTo = dateTo
-    // }
+    if (sortBy) {
+        params.sortBy = sortBy
+        params.order = order === "ascend" ? "asc" : "desc"
+    }
 
-    // if (selectedVenues && selectedVenues.length > 0) {
-    //     params.venues = selectedVenues.join(",")
-    // }
+    if (searchString) {
+        params.q = searchString
+    }
 
-    // if (selectedBands && selectedBands.length > 0) {
-    //     params.bands = selectedBands.join(",")
-    // }
-
-    // if (selectedGenres && selectedGenres.length > 0) {
-    //     params.genres = selectedGenres.join(",")
-    // }
-
-    return axios.get(`${BASE_API_URL}/products`, { params }).then(res => res.data).catch(e => console.error("Failed loading events", e))
+    return axios.get(`${BASE_API_URL}/products/search`, { params }).then(res => res.data).catch(error => error)
 }
 
 export const login = (requestDataa: ILoginRequestBody) => {

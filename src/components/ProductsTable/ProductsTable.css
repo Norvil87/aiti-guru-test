@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 32px;
 }
 
 .productTable_top-actions {
@@ -15,4 +16,32 @@
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+}
+
+.bad-rating {
+    color: #F11010;
+}
+
+.productTable_pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productTable_table-container {
+    margin-bottom: 0.5rem;
+}
+
+.productsTable_action1 {
+    padding: 4px;
+    border-radius: 24px;
+    height: auto;
+    width: 52px;
+}
+
+.productsTable_action2 {
+    padding: 0;
+    border-radius: 50%;
+    height: 26px;
+    width: 26px;
 }

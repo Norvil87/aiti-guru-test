@@ -1,5 +1,4 @@
 const theme = {
-
     token: {
         colorPrimary: "#242EDB",
         colorLink: "#242EDB",
@@ -10,10 +9,13 @@ const theme = {
     },
     components: {
         Typography: {
-            titleMarginBottom: "0.75rem",
+            titleMarginBottom: "0",
         },
         Input: {
             inputFontSize: 18
+        },
+        Table: {
+            headerColor: "#B2B3B9"
         }
     },
 }

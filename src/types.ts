@@ -1,7 +1,12 @@
 export interface IProduct {
     id: number;
-    name: string;
+    title: string;
+    brand: string;
+    thumbnail: string;
+    price: number
+    rating: number
+    category: string
+    sku: string
 }
 
-export type SortMethod = "completed" | "pending"
-export type FilteringMethod = "completed" | "pending" | null
+export type SortDirection = "ascend" | "descend"
